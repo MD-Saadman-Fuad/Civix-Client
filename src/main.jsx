@@ -9,6 +9,8 @@ import AuthProvider from './Context/AuthProvider.jsx';
 import Register from './pages/Register.jsx';
 import HomePage from './pages/HomePage.jsx'
 import Issues from './pages/Issues.jsx';
+import MyIssues from './pages/MyIssues.jsx';
+import MyContribution from './pages/MyContribution.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: 'issues',
         element: <Issues />,
+      },
+      {
+        path: 'my-issues',
+        element: <MyIssues />,
+      },
+      {
+        path: 'my-contributions',
+        element: <MyContribution />,
       }
     ],
   },
