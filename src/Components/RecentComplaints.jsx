@@ -44,11 +44,7 @@ const RecentComplaints = () => {
     }, []);
 
     return (
-        // build items from the JSON shape in the commented block above without changing outer code
-        (() => {
-            
-
-            return (
+        
                 <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="text-2xl sm:text-3xl font-bold">Recent Complaints</h2>
@@ -75,8 +71,7 @@ const RecentComplaints = () => {
                     </div>
                 </section>
             );
-        })()
-    )
+
 };
 
 export default RecentComplaints;

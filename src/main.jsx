@@ -12,6 +12,7 @@ import Issues from './pages/Issues.jsx';
 import MyIssues from './pages/MyIssues.jsx';
 import MyContribution from './pages/MyContribution.jsx';
 import AddIssues from './pages/AddIssues.jsx';
+import PrivateRoute from './Routes/PrivateRoute.jsx'
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'add-issues',
-        element: <AddIssues />,
+        element: <PrivateRoute><AddIssues /></PrivateRoute>,
       }
     ],
   },
