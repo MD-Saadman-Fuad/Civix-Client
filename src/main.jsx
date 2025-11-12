@@ -11,6 +11,7 @@ import HomePage from './pages/HomePage.jsx'
 import Issues from './pages/Issues.jsx';
 import MyIssues from './pages/MyIssues.jsx';
 import MyContribution from './pages/MyContribution.jsx';
+import AddIssues from './pages/AddIssues.jsx';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: 'my-contributions',
         element: <MyContribution />,
+      },
+      {
+        path: 'add-issues',
+        element: <AddIssues />,
       }
     ],
   },
