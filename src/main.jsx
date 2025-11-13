@@ -14,6 +14,7 @@ import MyContribution from './pages/MyContribution.jsx';
 import AddIssues from './pages/AddIssues.jsx';
 import PrivateRoute from './Routes/PrivateRoute.jsx'
 import IssuesDetail from './pages/IssuesDetail.jsx'
+import Error from './pages/Error.jsx'
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: '*',
+    element: <Error />
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(
