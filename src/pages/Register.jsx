@@ -60,12 +60,37 @@ const Register = () => {
                 updateUser({ displayName: name, photoURL: photoURL })
                     .then(() => {
                         // console.log("User profile updated successfully");
-                        form.reset();
-                        setIsLoading(false);
-                        // Small delay to ensure state is updated before navigation
-                        setTimeout(() => {
-                            navigate('/');
-                        }, 200); // Slightly longer delay for profile update
+                        // add the new user to our backend/database
+                        const newUser = {
+                            name: name,
+                            email: email,
+                            photo: photoURL
+                        };
+
+                        fetch('http://localhost:3000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(newUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                // optionally handle response
+                                console.log('Saved user to backend:', data);
+                            })
+                            .catch(err => {
+                                console.error('Error saving user to backend:', err);
+                            })
+                            .finally(() => {
+                                form.reset();
+                                setIsLoading(false);
+                                toast.success('Registration successful');
+                                // Small delay to ensure state is updated before navigation
+                                setTimeout(() => {
+                                    navigate('/');
+                                }, 200); // Slightly longer delay for profile update
+                            });
                     })
                     .catch(error => {
                         console.log("Profile update error: ", error.message);
@@ -101,6 +126,26 @@ const Register = () => {
         signInWithGoogle()
             .then(result => {
                 console.log('Google registration successful:', result.user);
+                const user = result.user;
+                console.log(user.displayName);
+                const newUser = {
+                    name: user.displayName,
+                    email: user.email,
+                    photo: user.photoURL
+                }
+                //add to database
+                fetch('http://localhost:3000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    });
+
                 setIsLoading(false);
                 // Small delay to ensure state is updated
                 setTimeout(() => {

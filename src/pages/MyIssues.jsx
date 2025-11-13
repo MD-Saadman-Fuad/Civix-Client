@@ -125,7 +125,7 @@ const MyIssues = () => {
     }
 
     return (
-        <div className='my-5'>
+        <div className='max-w-7xl mx-auto my-5'>
             <h2 className="text-3xl font-bold mb-4 ml-2 my-5">My Issues <span className='text-orange-500'>{issues.length}</span></h2>
             <div className="  overflow-x-auto">
                 <table className="table">
