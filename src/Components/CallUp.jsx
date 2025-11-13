@@ -29,7 +29,7 @@ const CallUp = () => {
     };
 
     return (
-    <section className="callup-section relative overflow-hidden bg-linear-to-r from-emerald-50 to-white/70 py-16 px-6">
+        <section className="callup-section relative overflow-hidden bg-linear-to-r from-emerald-50 to-white/70 py-16 px-6">
             <svg className="pointer-events-none absolute right-0 top-0 translate-x-1/4 -translate-y-1/4 opacity-30 w-72 h-72 md:w-96 md:h-96" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="g1" x1="0%" x2="100%">

@@ -43,7 +43,7 @@ const IssuesDetail = () => {
             ) : (<div>
 
                 <article className="bg-base-100 rounded-2xl shadow-xl p-8 grid grid-cols-1 md:grid-cols-3 gap-8 transform transition-all duration-500 ease-out hover:shadow-2xl">
-                        <div className="md:col-span-1 flex items-center justify-center">
+                    <div className="md:col-span-1 flex items-center justify-center">
                         <div className="w-full h-80 bg-base-200 rounded-xl overflow-hidden border border-base-300 shadow-sm">
                             <img src={issues.image || 'https://via.placeholder.com/800x520?text=No+Image'} alt={issues.title} className="w-full h-full object-cover" />
                         </div>

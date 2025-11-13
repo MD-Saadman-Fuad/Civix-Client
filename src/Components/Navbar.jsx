@@ -1,22 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
 import logo from '../assets/civixPNG.png'
 import userPNG from '../assets/user.png';
+import Button from './Button/Button.jsx';
 
 const Navbar = () => {
     const { user, signOutUser, loading } = useContext(AuthContext);
-    const [theme, setTheme] = useState(() => {
-        try {
-            return localStorage.getItem('theme') || document.documentElement.getAttribute('data-theme') || 'light';
-        } catch {
-            return 'light';
-        }
-    });
 
-    useEffect(() => {
-        document.documentElement.setAttribute('data-theme', theme);
-    }, [theme]);
     // console.log('Current user in Navbar:', user);
     // console.log('Auth loading state:', loading); 
     const handleSignOut = () => {
@@ -81,24 +72,9 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end gap-3 ">
 
-                    {/* Theme toggle */}
+                    {/* Theme toggle (animated) */}
                     <div className="flex items-center mr-2">
-                        <button
-                            onClick={() => {
-                                const next = theme === 'dark' ? 'light' : 'dark';
-                                setTheme(next);
-                                localStorage.setItem('theme', next);
-                                document.documentElement.setAttribute('data-theme', next);
-                            }}
-                            className="btn btn-ghost btn-sm"
-                            aria-label="Toggle theme"
-                        >
-                            {theme === 'dark' ? (
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a1 1 0 00-.894.553A7 7 0 1017.447 8.894 1 1 0 0016 8a8 8 0 11-6-6z" /></svg>
-                            ) : (
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 1.78a1 1 0 011.415 0l.707.707a1 1 0 11-1.414 1.414l-.708-.707a1 1 0 010-1.414zM18 9a1 1 0 110 2h-1a1 1 0 110-2h1zM5.05 4.464a1 1 0 010 1.414L4.343 6.585A1 1 0 112.93 5.172l.708-.708a1 1 0 011.414 0zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1z" /></svg>
-                            )}
-                        </button>
+                        <Button compact />
                     </div>
 
                     <div className="dropdown">

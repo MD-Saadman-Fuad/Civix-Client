@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { API_BASE } from '../lib/apiBase';
-const Resolved = () => {
+const Resolved = ({ className = '' }) => {
     const [task, setTask] = useState([]);
     useEffect(() => {
         fetch(`${API_BASE}/issues/resolved`)
@@ -12,7 +12,7 @@ const Resolved = () => {
             });
     }, []);
     return (
-        <div className='text-center w-full md:w-1/3 bg-emerald-200 p-5 rounded-lg shadow-lg'>
+        <div className={`${className} text-center bg-emerald-200 p-5 rounded-lg shadow-lg flex flex-col justify-between`}>
             <p className='font-bold text-2xl'> Total <span >Resolved Tasks</span> </p>
             <p className='font-bold text-4xl text-emerald-500'>{task.length}</p>
         </div>
