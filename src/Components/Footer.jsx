@@ -42,10 +42,30 @@ const Footer = () => {
                 <div className="flex flex-col gap-4">
                     <h5 className="font-semibold">Quick Links</h5>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li><a href="/issues" className="hover:underline">View Issues</a></li>
-                        <li><a href="/add-issues" className="hover:underline">Report an Issue</a></li>
-                        <li><a href="/my-issues" className="hover:underline">My Issues</a></li>
-                        <li><a href="/my-contributions" className="hover:underline">My Contributions</a></li>
+                        <li>
+                            <a href="/issues" className="hover:underline inline-flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 14s1-4 6-4 6 4 6 4v2H2v-2z"/></svg>
+                                View Issues
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/add-issues" className="hover:underline inline-flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/></svg>
+                                Report an Issue
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/my-issues" className="hover:underline inline-flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M4 3h12a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1zm2 3v2h8V6H6z"/></svg>
+                                My Issues
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/my-contributions" className="hover:underline inline-flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h3v6H3a1 1 0 01-1-1v-4zM9 4h4a3 3 0 013 3v7a1 1 0 01-1 1h-6V4z"/></svg>
+                                My Contributions
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -55,7 +75,7 @@ const Footer = () => {
                     <form onSubmit={handleSubscribe} className="flex gap-2">
                         <label htmlFor="footer-news" className="sr-only">Email</label>
                         <input id="footer-news" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@domain.com" className="input input-bordered w-full" />
-                        <button type="submit" className="btn btn-primary">Join</button>
+                        <button type="submit" className="btn text-white bg-orange-500 hover:bg-orange-700">Join</button>
                     </form>
                 </div>
             </div>

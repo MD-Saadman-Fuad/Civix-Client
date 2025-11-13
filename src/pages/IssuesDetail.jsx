@@ -65,26 +65,24 @@ const IssuesDetail = () => {
                         <h2 className="text-xl font-semibold mb-3">Description</h2>
                         <p className="text-lg text-gray-700 leading-relaxed mb-6 whitespace-pre-wrap">{issues.description}</p>
 
-                        <div className="flex items-center gap-4">
-                            <a href={issues.image || '#'} target="_blank" rel="noreferrer" className="text-sm md:text-base text-blue-600 underline">Open Image</a>
+                        <div className="flex items-center justify-between gap-4">
+                            <div className=''>
+                                <button onClick={() => window.open(issues.image || '#', '_blank')} className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full shadow mr-4">Open Image</button>
 
-                            <button onClick={() => window.history.back()} className=" bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full shadow">Back</button>
+                                <button onClick={() => window.history.back()} className=" bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full shadow">Back</button>
 
-                            <button
-                                onClick={() => contributionsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                                className="ml-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full shadow"
-                                aria-label="Contribute to this issue"
-                            >
-                                Contribute
-                            </button>
 
-                            <button
-                                onClick={() => setShowContribModal(true)}
-                                className="ml-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full shadow"
-                                aria-label="Pay Clean-Up Contribution"
-                            >
-                                Pay Clean-Up Contribution
-                            </button>
+                            </div>
+
+                            <div className='flex items-end justify-end'>
+                                <button
+                                    onClick={() => setShowContribModal(true)}
+                                    className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full shadow"
+                                    aria-label="Pay Clean-Up Contribution"
+                                >
+                                    Pay Clean-Up Contribution
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -132,7 +130,7 @@ const IssuesDetail = () => {
                             </div>
                             <div className="mt-4 flex justify-end gap-2">
                                 <button onClick={() => setShowContribModal(false)} className="px-3 py-1 border rounded">Cancel</button>
-                                <button onClick={() => {
+                                <button  onClick={() => {
                                     const payload = {
                                         issueId: issues._id || issues.issueId,
                                         issueTitle: issues.title,
@@ -173,7 +171,7 @@ const IssuesDetail = () => {
                                             console.error('Contribution error', err);
                                             Swal.fire('Error', 'Submission failed', 'error');
                                         });
-                                }} className="px-3 py-1 bg-green-500 hover:bg-green-600 text-white rounded">Submit</button>
+                                }} className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded shadow">Submit</button>
                             </div>
                         </div>
                     </div>

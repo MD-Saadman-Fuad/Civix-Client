@@ -20,7 +20,7 @@ const Carousel = () => {
     ];
 
     return (
-        <div className='max-w-4xl mx-auto' data-aos="zoom-out" data-aos-duration="1200">
+        <div className='max-w-4xl lg:max-w-7xl   mx-auto' data-aos="zoom-out" data-aos-duration="1200">
             <Swiper
                 modules={[Navigation, Pagination, Autoplay, EffectFade]}
                 spaceBetween={0}
