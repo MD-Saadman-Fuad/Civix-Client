@@ -42,13 +42,13 @@ const MyIssues = () => {
                 fetch(`${API_BASE}/issues/${_id}`, {
                     method: 'DELETE',
                     headers: {
-                        // include auth header like other requests in this file
+
                         authorization: `Bearer ${user?.accessToken}`
                     }
                 })
                     .then(res => res.json())
                     .then(data => {
-                        // Accept either a { success: true } or the native Mongo result
+
                         const ok = data && (data.success || data.deletedCount > 0);
                         if (ok) {
                             Swal.fire('Deleted!', 'Issue has been deleted.', 'success');
@@ -74,11 +74,11 @@ const MyIssues = () => {
     }
 
     const saveEdit = async () => {
-        // simple, clear update flow using async/await
+
         if (!editing) return;
         const id = editing._id;
 
-        // Build the update object (only allowed fields)
+
         const update = {
             title: editing.title || '',
             category: editing.category || '',
@@ -89,7 +89,7 @@ const MyIssues = () => {
         };
 
         try {
-            // show a saving indicator
+
             Swal.fire({ title: 'Saving...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
 
             const res = await fetch(`${API_BASE}/issues/${id}`, {
@@ -104,14 +104,11 @@ const MyIssues = () => {
             const data = await res.json();
 
             Swal.close();
-
-            // Accept either { success: true } or native Mongo update result
             const ok = data && (
                 data.success || data.modifiedCount > 0 || data.matchedCount > 0 || data.upsertedCount > 0
             );
 
             if (ok) {
-                // update local list with the new values
                 setIssues(prev => prev.map(it => (it._id === id ? { ...it, ...update } : it)));
                 setEditing(null);
                 Swal.fire('Updated', 'Issue updated successfully', 'success');

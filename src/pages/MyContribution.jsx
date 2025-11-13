@@ -14,10 +14,7 @@ const MyContribution = () => {
     const [contributions, setContributions] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // generate PDF for a single contribution (simple, clear)
-    // Uses jsPDF and jsPDF-AutoTable (see https://github.com/parallax/jsPDF and https://github.com/simonbengtsson/jsPDF-AutoTable)
     const generatePdfFor = (c) => {
-        // Simple, clear single-contribution PDF
         try {
             Swal.fire({ title: 'Preparing PDF...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
             const doc = new jsPDF({ unit: 'pt', format: 'a4' });
@@ -93,7 +90,6 @@ const MyContribution = () => {
             const body = contributions.map((c, i) => ([
                 i + 1,
                 c.issueTitle || '-',
-                // Use ASCII currency code in PDF to ensure symbol renders correctly
                 c.amount != null ? `BDT ${c.amount}` : '-',
                 c.contributorName || c.email || '-',
                 c.phone || '-',
@@ -102,8 +98,6 @@ const MyContribution = () => {
                 c.additionalInfo || '-'
             ]));
 
-            // Render table of rows
-            // render table using autoTable(doc, options)
             autoTable(doc, {
                 startY: 70,
                 head: [["#", "Issue Title", "Amount", "Contributor", "Phone", "Address", "Date", "Info"]],
@@ -114,7 +108,7 @@ const MyContribution = () => {
                 margin: { left: margin, right: margin }
             });
 
-            // Add simple footer page numbers after table is rendered
+
             const totalPages = doc.internal.getNumberOfPages();
             for (let i = 1; i <= totalPages; i++) {
                 doc.setPage(i);
@@ -134,7 +128,6 @@ const MyContribution = () => {
     };
 
     useEffect(() => {
-        // don't run until we have an email
         if (!user?.email) {
             setContributions([]);
             setLoading(false);

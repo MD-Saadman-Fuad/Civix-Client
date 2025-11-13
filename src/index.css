@@ -20,3 +20,17 @@ body {
   font-family: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
 }
+
+/* Normalize button / navbar link text size across the site */
+:root {
+  --site-button-font-size: 14px;
+}
+
+/* Target common button/link patterns used in the navbar and components */
+.navbar a,
+.navbar .btn,
+.menu a,
+.inline-flex.items-center,
+.inline-flex.items-center > span {
+  font-size: var(--site-button-font-size) !important;
+}

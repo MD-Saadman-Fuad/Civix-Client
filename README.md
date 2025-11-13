@@ -102,6 +102,7 @@ curl "http://localhost:3000/issues/contributions/6915b964bbe7cd9c877085d0"
 ---
 
 If you'd like, I can expand the README with example API payloads, screenshots, or a short contributor/developer guide.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

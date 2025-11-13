@@ -132,8 +132,8 @@ const Navbar = () => {
                                 </>
                             ) : (
                                 <>
-                                    {/* <NavLink to="/login" className={({ isActive }) => `rounded-full px-4 py-2 shadow font-semibold transition-colors duration-200 ${isActive ? 'bg-orange-500 text-white' : 'bg-white text-orange-500 border border-orange-500'}`}>Login</NavLink>
-                                    <NavLink to="/register" className={({ isActive }) => `rounded-full px-4 py-2 shadow font-semibold transition-colors duration-200 ${isActive ? 'bg-orange-500 text-white' : 'bg-white text-orange-500 border border-orange-500'}`}>Register</NavLink> */}
+                                    <NavLink to="/login" className={({ isActive }) => `rounded-full flex md:hidden px-4 py-2 shadow font-semibold transition-colors duration-200 ${isActive ? 'bg-linear-to-r from-emerald-600 to-sky-500 text-white' : 'bg-white text-emerald-600 border border-emerald-600'}`}>Login</NavLink>
+                                    <NavLink to="/register" className={({ isActive }) => `rounded-full flex md:hidden px-4 py-2 shadow font-semibold transition-colors duration-200 ${isActive ? 'bg-linear-to-r from-emerald-600 to-sky-500 text-white' : 'bg-white text-emerald-600 border border-emerald-600'}`}>Register</NavLink>
                                 </>
                             )}
                         </ul>
@@ -170,11 +170,11 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <div className="flex gap-2">
-                            <NavLink to="/login" className="inline-flex items-center gap-2 rounded-full text-white px-4 py-2 shadow font-semibold bg-linear-to-r from-emerald-600 to-sky-500 hover:from-emerald-700 hover:to-sky-600">
+                            <NavLink to="/login" className="hidden sm:flex  items-center gap-2 rounded-full text-white px-4 py-2 shadow font-semibold bg-linear-to-r from-emerald-600 to-sky-500 hover:from-emerald-700 hover:to-sky-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M10 17l5-5-5-5v3H4v4h6v3zM20 3h-8v2h8v14h-8v2h8a2 2 0 002-2V5a2 2 0 00-2-2z" /></svg>
                                 <span>Login</span>
                             </NavLink>
-                            <NavLink to="/register" className="inline-flex items-center gap-2 rounded-full text-white px-4 py-2 shadow font-semibold bg-linear-to-r from-emerald-600 to-sky-500 hover:from-emerald-700 hover:to-sky-600">
+                            <NavLink to="/register" className="hidden sm:flex  items-center gap-2 rounded-full text-white px-4 py-2 shadow font-semibold bg-linear-to-r from-emerald-600 to-sky-500 hover:from-emerald-700 hover:to-sky-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0H5zm13-9h-2v2h-2v-2h-2v-2h2V8h2v2h2v2z" /></svg>
                                 <span>Register</span>
                             </NavLink>

@@ -8,7 +8,6 @@ const Footer = () => {
 
     const handleSubscribe = (e) => {
         e.preventDefault()
-        // lightweight UX: show an alert / console (backend integration optional)
         if (!email) return
         console.log('Subscribe request for', email)
         setEmail('')
