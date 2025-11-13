@@ -75,7 +75,7 @@ const Footer = () => {
                     <form onSubmit={handleSubscribe} className="flex gap-2">
                         <label htmlFor="footer-news" className="sr-only">Email</label>
                         <input id="footer-news" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@domain.com" className="input input-bordered w-full" />
-                        <button type="submit" className="btn text-white bg-orange-500 hover:bg-orange-700">Join</button>
+                        <button type="submit" className="btn text-white bg-linear-to-r from-emerald-600 to-sky-500 hover:from-emerald-700 hover:to-sky-600">Join</button>
                     </form>
                 </div>
             </div>

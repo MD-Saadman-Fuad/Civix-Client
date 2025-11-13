@@ -13,10 +13,9 @@ import B3 from '../assets/b3.webp';
 
 const Carousel = () => {
     const images = [
-        { src: B1, alt: 'Pet Care Service 1' },
-        { src: B2, alt: 'Pet Care Service 2' },
-        { src: B3, alt: 'Pet Care Service 3' },
-        // { src: B4, alt: 'Pet Care Service 4' }
+        { src: B1, alt: ' Service 1' },
+        { src: B2, alt: ' Service 2' },
+        { src: B3, alt: ' Service 3' },
     ];
 
     return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Context/AuthContext';
+import { API_BASE } from '../lib/apiBase';
 import Swal from 'sweetalert2';
 
 
@@ -11,7 +12,7 @@ const MyIssues = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:3000/issues?email=${user.email}`, {
+            fetch(`${API_BASE}/issues?email=${user.email}`, {
                 headers: {
                     authorization: `Bearer ${user.accessToken}`,
                 }
@@ -38,7 +39,7 @@ const MyIssues = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/issues/${_id}`, {
+                fetch(`${API_BASE}/issues/${_id}`, {
                     method: 'DELETE',
                     headers: {
                         // include auth header like other requests in this file
@@ -91,7 +92,7 @@ const MyIssues = () => {
             // show a saving indicator
             Swal.fire({ title: 'Saving...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
 
-            const res = await fetch(`http://localhost:3000/issues/${id}`, {
+            const res = await fetch(`${API_BASE}/issues/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -126,7 +127,7 @@ const MyIssues = () => {
 
     return (
         <div className='max-w-7xl mx-auto my-5'>
-            <h2 className="text-3xl font-bold mb-4 ml-2 my-5">My Issues <span className='text-orange-500'>{issues.length}</span></h2>
+            <h2 className="text-3xl font-bold mb-4 ml-2 my-5">My Issues <span className='text-emerald-500'>{issues.length}</span></h2>
             <div className="  overflow-x-auto">
                 <table className="table">
                     <thead>
@@ -215,7 +216,7 @@ const MyIssues = () => {
                         </div>
                         <div className="mt-4 flex justify-end gap-2">
                             <button onClick={() => setEditing(null)} className="px-3 py-1 border rounded">Cancel</button>
-                            <button onClick={saveEdit} className="px-3 py-1 bg-orange-500 hover:bg-orange-800 text-white rounded">Save</button>
+                            <button onClick={saveEdit} className="px-3 py-1 bg-emerald-600 hover:bg-emerald-800 text-white rounded">Save</button>
                         </div>
                     </div>
                 </div>

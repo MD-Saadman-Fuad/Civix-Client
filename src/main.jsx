@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Layout/Home.jsx';
+import { API_BASE } from './lib/apiBase';
 import Login from './pages/Login.jsx';
 import AuthProvider from './Context/AuthProvider.jsx';
 import Register from './pages/Register.jsx';
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'issues/:id',
-        loader: ({params}) => fetch(`http://localhost:3000/issues/${params.id}`),
+        loader: ({ params }) => fetch(`${API_BASE}/issues/${params.id}`),
         element: <PrivateRoute><IssuesDetail /></PrivateRoute>,
       }
     ],

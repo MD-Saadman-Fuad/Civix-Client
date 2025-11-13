@@ -1,6 +1,7 @@
 import React, { use, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
+import { API_BASE } from '../lib/apiBase';
 import toast, { Toaster } from 'react-hot-toast';
 
 
@@ -52,8 +53,8 @@ const Register = () => {
         setIsLoading(true);
 
         createUser(email, password)
-            .then(result => {
-                const createdUser = result.user;
+            .then(() => {
+                // created user is available as result.user
                 // console.log("User created:", createdUser);
 
                 // Update user profile with name and photoURL
@@ -67,7 +68,7 @@ const Register = () => {
                             photo: photoURL
                         };
 
-                        fetch('http://localhost:3000/users', {
+                        fetch(`${API_BASE}/users`, {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -134,7 +135,7 @@ const Register = () => {
                     photo: user.photoURL
                 }
                 //add to database
-                fetch('http://localhost:3000/users', {
+                fetch(`${API_BASE}/users`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -253,7 +254,7 @@ const Register = () => {
 
                             <button
                                 type='submit'
-                                className={`btn btn-neutral mt-4 bg-orange-500 hover:bg-orange-800 ${isLoading ? 'loading' : ''}`}
+                                className={`btn btn-neutral mt-4 bg-linear-to-r from-emerald-600 to-sky-500 hover:from-emerald-700 hover:to-sky-600 ${isLoading ? 'loading' : ''}`}
                                 disabled={isLoading}
                             >
                                 {isLoading ? 'Registering...' : 'Register'}
@@ -272,7 +273,7 @@ const Register = () => {
                             Register with Google
                         </button>
 
-                        <h1 className='pt-5 text-center'>Already Have an account? <Link className=" text-orange-500 hover:text-orange-800" to="/login">login?</Link></h1>
+                        <h1 className='pt-5 text-center'>Already Have an account? <Link className=" text-emerald-500 hover:text-emerald-800" to="/login">login?</Link></h1>
                     </div>
                 </div>
             </div>

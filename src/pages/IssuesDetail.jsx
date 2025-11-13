@@ -1,4 +1,5 @@
 import React, { use, useRef } from 'react';
+import { API_BASE } from '../lib/apiBase';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import { useState, useEffect } from 'react';
@@ -13,10 +14,11 @@ const IssuesDetail = () => {
     // const [contributions, setContributions] = useState(null);
     const contributionsRef = useRef(null);
     const [showContribModal, setShowContribModal] = useState(false);
-    const [contribForm, setContribForm] = useState({ contributorName: '', amount: '', phone: '', address: '', additionalInfo: '' });
+    const [contribForm, setContribForm] = useState({ contributorName: '', amount: '', phone: '', address: '', additionalInfo: '', contributorPhoto: '' });
+    const [refreshContributions, setRefreshContributions] = useState(0);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/issues/${_id}`, {
+        fetch(`${API_BASE}/issues/${_id}`, {
             headers: {
                 authorization: `Bearer ${user?.accessToken}`,
             }
@@ -50,7 +52,7 @@ const IssuesDetail = () => {
                     <div className="md:col-span-2">
                         <h1 className="text-3xl md:text-4xl font-extrabold mb-3 leading-tight">{issues.title}</h1>
                         <div className="flex flex-wrap items-center gap-4 mb-6">
-                            <span className="text-sm md:text-base bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-medium shadow-sm">{issues.category}</span>
+                            <span className="text-sm md:text-base bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full font-medium shadow-sm">{issues.category}</span>
                             <span className="text-sm md:text-base bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Status: <strong className="ml-1">{issues.status || 'ongoing'}</strong></span>
                             <span className="text-sm md:text-base bg-green-50 text-green-700 px-3 py-1 rounded-full">Amount: <strong className="ml-1">৳{issues.amount ?? 0}</strong></span>
                         </div>
@@ -65,11 +67,11 @@ const IssuesDetail = () => {
                         <h2 className="text-xl font-semibold mb-3">Description</h2>
                         <p className="text-lg text-gray-700 leading-relaxed mb-6 whitespace-pre-wrap">{issues.description}</p>
 
-                        <div className="flex items-center justify-between gap-4">
-                            <div className=''>
-                                <button onClick={() => window.open(issues.image || '#', '_blank')} className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full shadow mr-4">Open Image</button>
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                            <div className=' flex-col md:flex-row items-center justify-start'>
+                                <button onClick={() => window.open(issues.image || '#', '_blank')} className="bg-linear-to-r from-emerald-600 to-sky-500 hover:from-emerald-700 hover:to-sky-600 text-white px-4 py-2 rounded-full shadow mr-4">Open Image</button>
 
-                                <button onClick={() => window.history.back()} className=" bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full shadow">Back</button>
+                                <button onClick={() => window.history.back()} className=" bg-linear-to-r from-emerald-600 to-sky-500 hover:from-emerald-700 hover:to-sky-600 text-white px-4 py-2 rounded-full shadow">Back</button>
 
 
                             </div>
@@ -77,7 +79,7 @@ const IssuesDetail = () => {
                             <div className='flex items-end justify-end'>
                                 <button
                                     onClick={() => setShowContribModal(true)}
-                                    className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full shadow"
+                                    className="bg-linear-to-r from-emerald-600 to-sky-500 hover:from-emerald-700 hover:to-sky-600 text-white px-4 py-2 rounded-full shadow"
                                     aria-label="Pay Clean-Up Contribution"
                                 >
                                     Pay Clean-Up Contribution
@@ -88,7 +90,7 @@ const IssuesDetail = () => {
                 </article>
                 <div>
                     {
-                        <IssuseContributions issueId={issues.issueId} issue={issues} />
+                        <IssuseContributions refresh={refreshContributions} issueId={issues.issueId} issue={issues} />
                     }
                 </div>
 
@@ -111,6 +113,10 @@ const IssuesDetail = () => {
                                     <input className="w-full border rounded px-2 py-1" value={contribForm.contributorName} onChange={e => setContribForm(s => ({ ...s, contributorName: e.target.value }))} />
                                 </div>
                                 <div>
+                                    <label className="block text-sm">Photo URL (optional)</label>
+                                    <input className="w-full border rounded px-2 py-1" placeholder={user?.photoURL ? 'Using your account photo by default' : 'https://example.com/photo.jpg'} value={contribForm.contributorPhoto} onChange={e => setContribForm(s => ({ ...s, contributorPhoto: e.target.value }))} />
+                                </div>
+                                <div>
                                     <label className="block text-sm">Email</label>
                                     <input className="w-full border rounded px-2 py-1" value={user?.email || ''} readOnly />
                                 </div>
@@ -130,12 +136,13 @@ const IssuesDetail = () => {
                             </div>
                             <div className="mt-4 flex justify-end gap-2">
                                 <button onClick={() => setShowContribModal(false)} className="px-3 py-1 border rounded">Cancel</button>
-                                <button  onClick={() => {
+                                <button onClick={() => {
                                     const payload = {
                                         issueId: issues._id || issues.issueId,
                                         issueTitle: issues.title,
                                         amount: Number(contribForm.amount) || 0,
                                         contributorName: contribForm.contributorName,
+                                        contributorPhoto: contribForm.contributorPhoto || user?.photoURL || '',
                                         email: user?.email || '',
                                         phone: contribForm.phone,
                                         address: contribForm.address,
@@ -145,7 +152,7 @@ const IssuesDetail = () => {
 
                                     Swal.fire({ title: 'Submitting...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
 
-                                    fetch('http://localhost:3000/contributions', {
+                                    fetch(`${API_BASE}/contributions`, {
                                         method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/json',
@@ -160,7 +167,9 @@ const IssuesDetail = () => {
                                             if (ok) {
                                                 Swal.fire('Thank you', 'Contribution recorded successfully', 'success');
                                                 setShowContribModal(false);
-                                                setContribForm({ contributorName: '', amount: '', phone: '', address: '', additionalInfo: '' });
+                                                setContribForm({ contributorName: '', amount: '', phone: '', address: '', additionalInfo: '', contributorPhoto: '' });
+                                                // trigger a refetch in the child component to show the new contribution
+                                                setRefreshContributions(r => r + 1);
                                                 setTimeout(() => contributionsRef.current?.scrollIntoView({ behavior: 'smooth' }), 300);
                                             } else {
                                                 Swal.fire('Error', 'Could not record contribution', 'error');
@@ -171,7 +180,7 @@ const IssuesDetail = () => {
                                             console.error('Contribution error', err);
                                             Swal.fire('Error', 'Submission failed', 'error');
                                         });
-                                }} className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded shadow">Submit</button>
+                                }} className="bg-linear-to-r from-emerald-600 to-sky-500 hover:from-emerald-700 hover:to-sky-600 text-white px-4 py-2 rounded shadow">Submit</button>
                             </div>
                         </div>
                     </div>

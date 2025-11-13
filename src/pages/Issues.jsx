@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { API_BASE } from '../lib/apiBase';
 import { NavLink } from 'react-router-dom';
 import IssueCard from '../Components/IssueCard.jsx';
 
@@ -35,7 +36,7 @@ const RecentComplaints = () => {
     // "6914534c4fefa3d1a3987a8a"
 
     useEffect(() => {
-        fetch('http://localhost:3000/issues')
+        fetch(`${API_BASE}/issues`)
             .then(res => res.json())
             .then(data => {
                 console.log('Fetched recent complaints:', data);

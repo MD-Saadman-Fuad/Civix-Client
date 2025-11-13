@@ -3,9 +3,11 @@ import React from 'react';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { AuthContext } from '../Context/AuthContext';
+import { API_BASE } from '../lib/apiBase';
 import { use } from 'react';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import { data } from 'react-router';
 
 const MyContribution = () => {
     const { user } = use(AuthContext);
@@ -140,31 +142,29 @@ const MyContribution = () => {
         }
 
         setLoading(true);
-        fetch(`http://localhost:3000/contributions?email=${user.email}`, {
+        fetch(`${API_BASE}/contributions?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${user?.accessToken}`,
             }
+        }).then(res => res.json())
+        .then(data  => {
+            setContributions(Array.isArray(data) ? data : []);
         })
-            .then(res => {
-                if (!res.ok) throw new Error(`Status ${res.status}`);
-                return res.json();
-            })
-            .then(data => {
-                setContributions(Array.isArray(data) ? data : []);
-            })
-            .catch(err => {
-                console.error('Failed to load contributions', err);
-                setContributions([]);
-            })
-            .finally(() => setLoading(false));
+        .catch(err => {
+            console.error('Failed to load my contributions:', err);
+            setContributions([]);
+        })
+        .finally(() => setLoading(false));
 
     }, [user?.email, user?.accessToken]);
+
+    console.log('My contributions for', user?.email, contributions);
 
     return (
         <div className="p-4">
             <div className="flex items-center gap-4 mb-4">
                 <h2 className="text-2xl font-semibold">My Contributions</h2>
-                <button onClick={generateFullReport} className="ml-auto bg-orange-500 hover:bg-orange-700 text-white px-3 py-1 rounded">Download Report</button>
+                <button onClick={generateFullReport} className="ml-auto bg-linear-to-r from-emerald-600 to-sky-500 hover:from-emerald-700 hover:to-sky-600 text-white px-3 py-1 rounded">Download Report</button>
             </div>
             {loading ? (
                 <div className="text-gray-500">Loading contributions...</div>
@@ -198,7 +198,7 @@ const MyContribution = () => {
                                     <td>{c.date ? new Date(c.date).toLocaleString() : '-'}</td>
                                     <td className="max-w-xs wrap-break-word">{c.additionalInfo || '-'}</td>
                                     <td>
-                                        <button onClick={() => generatePdfFor(c)} className="bg-orange-500 hover:bg-orange-700 text-white px-2 py-1 rounded">Download</button>
+                                        <button onClick={() => generatePdfFor(c)} className="bg-linear-to-r from-emerald-600 to-sky-500 hover:from-emerald-700 hover:to-sky-600 text-white px-2 py-1 rounded">Download</button>
                                     </td>
                                 </tr>
                             ))}

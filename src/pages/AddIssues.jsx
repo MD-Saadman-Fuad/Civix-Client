@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { API_BASE } from '../lib/apiBase';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
@@ -43,7 +44,7 @@ const AddIssues = () => {
 
         setSubmitting(true);
 
-        fetch('http://localhost:3000/issues', {
+        fetch(`${API_BASE}/issues`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(issue)
@@ -129,7 +130,7 @@ const AddIssues = () => {
                 </div>
 
                 <div className="flex justify-end">
-                    <button type="submit" disabled={submitting} className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded">
+                    <button type="submit" disabled={submitting} className="bg-linear-to-r from-emerald-600 to-sky-500 hover:from-emerald-700 hover:to-sky-600 text-white px-4 py-2 rounded">
                         {submitting ? 'Submitting...' : 'Submit Issue'}
                     </button>
                 </div>

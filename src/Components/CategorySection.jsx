@@ -55,7 +55,7 @@ const CategorySection = () => {
                                 <h3 className="text-white text-lg font-semibold drop-shadow">{cat.title}</h3>
                                 <p className="text-white text-sm mt-1 opacity-90 hidden md:block">{cat.desc}</p>
                                 <div className="mt-3">
-                                    <span className="inline-flex items-center gap-2 bg-white/90 text-orange-600 font-medium px-3 py-1 rounded-full text-xs shadow-sm transition-transform transform group-hover:translate-x-1">Explore
+                                    <span className="inline-flex items-center gap-2 bg-white/90 text-emerald-600 font-medium px-3 py-1 rounded-full text-xs shadow-sm transition-transform transform group-hover:translate-x-1">Explore
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
                                     </span>
                                 </div>
