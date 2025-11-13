@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
-import logo from '../assets/civix_logo.png'
+import logo from '../assets/civixPNG.png'
 import userPNG from '../assets/user.png';
 
 const Navbar = () => {
