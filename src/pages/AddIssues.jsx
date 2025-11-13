@@ -81,7 +81,7 @@ const AddIssues = () => {
     return (
         <div className="max-w-3xl mx-auto px-4 py-8">
             <h1 className="text-2xl font-bold mb-4">Report an Issue</h1>
-            <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded-lg shadow">
+            <form onSubmit={handleSubmit} className="space-y-4 bg-base-100 p-6 rounded-lg shadow">
                 <div>
                     <label className="block text-sm font-medium mb-1">Issue Title</label>
                     <input required value={title} onChange={e => setTitle(e.target.value)} className="w-full border rounded px-3 py-2" placeholder="Short descriptive title" />
@@ -120,7 +120,7 @@ const AddIssues = () => {
                 <div className="flex items-center justify-between">
                     <div>
                         <label className="block text-sm font-medium mb-1">Reporter's Email</label>
-                        <input readOnly value={user?.email || ''} className="w-full border rounded px-3 py-2 bg-gray-50" />
+                        <input readOnly value={user?.email || ''} className="w-full border rounded px-3 py-2 bg-base-200" />
                     </div>
 
                     <div className="text-sm text-gray-600">

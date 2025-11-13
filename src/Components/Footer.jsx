@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logoPNG from '../assets/civixPNG.png';
-import { FaXTwitter, FaYoutube, FaSquareInstagram  } from "react-icons/fa6";
+import { FaXTwitter, FaYoutube, FaSquareInstagram } from "react-icons/fa6";
 import { ImFacebook2 } from "react-icons/im";
 
 const Footer = () => {
@@ -15,7 +15,7 @@ const Footer = () => {
     }
 
     return (
-        <footer className="bg-gray-200 text-base-content py-12 px-6 md:px-16">
+        <footer className="bg-base-200 text-base-content py-12 px-6 md:px-16">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
                 <div className="flex flex-col gap-4">
                     <div className="flex items-center gap-3">

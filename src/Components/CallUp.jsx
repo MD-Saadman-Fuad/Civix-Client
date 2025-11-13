@@ -29,7 +29,7 @@ const CallUp = () => {
     };
 
     return (
-        <section className="relative overflow-hidden bg-linear-to-r from-emerald-50 to-white/70 py-16 px-6">
+    <section className="callup-section relative overflow-hidden bg-linear-to-r from-emerald-50 to-white/70 py-16 px-6">
             <svg className="pointer-events-none absolute right-0 top-0 translate-x-1/4 -translate-y-1/4 opacity-30 w-72 h-72 md:w-96 md:h-96" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="g1" x1="0%" x2="100%">
@@ -42,9 +42,9 @@ const CallUp = () => {
 
             <div className="relative max-w-5xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div className="p-6 md:p-8 bg-white/80 backdrop-blur rounded-2xl shadow-2xl">
+                    <div className="p-6 md:p-8 bg-base-100/80 backdrop-blur rounded-2xl shadow-2xl">
                         <h3 className="text-3xl md:text-4xl font-extrabold text-emerald-700">Join Our Clean Drive</h3>
-                        <p className="mt-3 text-sm text-neutral-600">Volunteer a few hours to help clean and beautify our community. We provide all supplies and training — just bring your energy.</p>
+                        <p className="mt-3 text-sm text-base-content">Volunteer a few hours to help clean and beautify our community. We provide all supplies and training — just bring your energy.</p>
 
                         <div className="mt-6 flex flex-wrap gap-3 text-sm text-neutral-700">
                             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800">Community Events</span>
@@ -53,7 +53,7 @@ const CallUp = () => {
                         </div>
                     </div>
 
-                    <form onSubmit={handleJoin} className="p-6 md:p-8 bg-linear-to-b from-white to-white/90 rounded-2xl shadow-lg border border-gray-100">
+                    <form onSubmit={handleJoin} className="callup-form p-6 md:p-8 bg-base-200 rounded-2xl shadow-lg border border-base-300">
                         <div className="flex flex-col gap-4">
                             <label className="text-xs text-neutral-600">Get event invites & updates</label>
                             <div className="flex gap-3">

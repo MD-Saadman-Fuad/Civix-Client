@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button data-time="day" id="button-wrapper">
+      <span id="button" onclick="toggleButton()"></span>
+      <canvas id="stars"></canvas>
+    </button>
+
+    <label for="scale"
+      >Scale: <span id="scale-value">3</span>
+      <input
+        type="range"
+        name="scale"
+        id="scale"
+        min="1"
+        max="5"
+        value="3"
+        onchange="updateScale()"
+      />
+    </label>
+  </body>
+</html>

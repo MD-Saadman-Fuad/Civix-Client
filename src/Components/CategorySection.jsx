@@ -48,7 +48,7 @@ const CategorySection = () => {
                         aria-label={`View ${cat.title} issues`}
                         className="group"
                     >
-                        <article className="relative rounded-xl overflow-hidden bg-white shadow-md hover:shadow-xl transform transition duration-300 will-change-transform hover:-translate-y-1 motion-reduce:transform-none">
+                        <article className="relative rounded-xl overflow-hidden bg-base-100 shadow-md hover:shadow-xl transform transition duration-300 will-change-transform hover:-translate-y-1 motion-reduce:transform-none">
                             <img src={cat.img} alt={cat.title} className="w-full h-40 sm:h-44 object-cover" />
                             <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                             <div className="absolute bottom-0 left-0 right-0 p-4">

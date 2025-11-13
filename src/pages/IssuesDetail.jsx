@@ -42,9 +42,9 @@ const IssuesDetail = () => {
                 <div className="text-center text-gray-500 text-lg">Loading issue details...</div>
             ) : (<div>
 
-                <article className="bg-white rounded-2xl shadow-xl p-8 grid grid-cols-1 md:grid-cols-3 gap-8 transform transition-all duration-500 ease-out hover:shadow-2xl">
-                    <div className="md:col-span-1 flex items-center justify-center">
-                        <div className="w-full h-80 bg-gray-100 rounded-xl overflow-hidden border border-gray-100 shadow-sm">
+                <article className="bg-base-100 rounded-2xl shadow-xl p-8 grid grid-cols-1 md:grid-cols-3 gap-8 transform transition-all duration-500 ease-out hover:shadow-2xl">
+                        <div className="md:col-span-1 flex items-center justify-center">
+                        <div className="w-full h-80 bg-base-200 rounded-xl overflow-hidden border border-base-300 shadow-sm">
                             <img src={issues.image || 'https://via.placeholder.com/800x520?text=No+Image'} alt={issues.title} className="w-full h-full object-cover" />
                         </div>
                     </div>
@@ -53,19 +53,19 @@ const IssuesDetail = () => {
                         <h1 className="text-3xl md:text-4xl font-extrabold mb-3 leading-tight">{issues.title}</h1>
                         <div className="flex flex-wrap items-center gap-4 mb-6">
                             <span className="text-sm md:text-base bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full font-medium shadow-sm">{issues.category}</span>
-                            <span className="text-sm md:text-base bg-gray-100 text-gray-700 px-3 py-1 rounded-full">Status: <strong className="ml-1">{issues.status || 'ongoing'}</strong></span>
+                            <span className="text-sm md:text-base bg-base-200 text-base-content/80 px-3 py-1 rounded-full">Status: <strong className="ml-1 text-base-content">{issues.status || 'ongoing'}</strong></span>
                             <span className="text-sm md:text-base bg-green-50 text-green-700 px-3 py-1 rounded-full">Amount: <strong className="ml-1">৳{issues.amount ?? 0}</strong></span>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-600 mb-6">
-                            <div><strong>Location:</strong> <span className="ml-2">{issues.location}</span></div>
-                            <div><strong>Reported on:</strong> <span className="ml-2">{issues.date ? new Date(issues.date).toLocaleString() : '—'}</span></div>
-                            <div><strong>Reporter's email:</strong> <span className="ml-2">{issues.email}</span></div>
-                            <div><strong>Issue ID:</strong> <span className="ml-2 font-mono text-xs text-gray-500">{issues._id}</span></div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm mb-6">
+                            <div className="card-meta"><strong>Location:</strong> <span className="ml-2 issue-location">{issues.location}</span></div>
+                            <div className="card-meta"><strong>Reported on:</strong> <span className="ml-2 issue-location">{issues.date ? new Date(issues.date).toLocaleString() : '—'}</span></div>
+                            <div className="card-meta"><strong>Reporter's email:</strong> <span className="ml-2 issue-location">{issues.email}</span></div>
+                            <div className="card-meta"><strong>Issue ID:</strong> <span className="ml-2 font-mono text-xs issue-location">{issues._id}</span></div>
                         </div>
 
                         <h2 className="text-xl font-semibold mb-3">Description</h2>
-                        <p className="text-lg text-gray-700 leading-relaxed mb-6 whitespace-pre-wrap">{issues.description}</p>
+                        <p className="text-lg issue-description leading-relaxed mb-6 whitespace-pre-wrap">{issues.description}</p>
 
                         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                             <div className=' flex-col md:flex-row items-center justify-start'>
@@ -97,7 +97,7 @@ const IssuesDetail = () => {
                 {/* Contribution modal */}
                 {showContribModal && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-                        <div className="bg-white rounded-lg p-6 w-full max-w-lg">
+                        <div className="bg-base-100 rounded-lg p-6 w-full max-w-lg">
                             <h3 className="text-lg font-semibold mb-3">Pay Clean-Up Contribution</h3>
                             <div className="space-y-3">
                                 <div>

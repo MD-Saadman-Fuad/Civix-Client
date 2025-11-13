@@ -168,7 +168,7 @@ const MyIssues = () => {
             {/* Edit modal */}
             {editing && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black/40">
-                    <div className="bg-white p-6 rounded shadow max-w-lg w-full">
+                    <div className="bg-base-100 p-6 rounded shadow max-w-lg w-full">
                         <h3 className="text-lg font-semibold mb-3">Update Issue</h3>
                         <div className="space-y-3">
                             <div>

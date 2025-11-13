@@ -34,3 +34,44 @@ body {
 .inline-flex.items-center > span {
   font-size: var(--site-button-font-size) !important;
 }
+
+/* Dark theme overrides for the CallUp (Join Our Clean Drive) section */
+html[data-theme='dark'] .callup-section {
+  background: #000 !important;
+  color: #fff;
+}
+
+html[data-theme='dark'] .callup-section .callup-form {
+  background: rgba(255,255,255,0.03) !important;
+  border-color: rgba(255,255,255,0.06) !important;
+  color: #fff;
+}
+
+html[data-theme='dark'] .callup-section h3 {
+  color: #bbf7d0 !important; /* light-emerald headline in dark mode */
+}
+
+html[data-theme='dark'] .callup-section p,
+html[data-theme='dark'] .callup-section label,
+html[data-theme='dark'] .callup-section .inline-flex {
+  color: rgba(255,255,255,0.92) !important;
+}
+
+/* Toned-down status & badge styles for dark theme */
+html[data-theme='dark'] .status-muted,
+html[data-theme='dark'] .card .status-muted {
+  color: rgba(255,255,255,0.78) !important;
+}
+
+/* Make CallUp badges less glaring in dark mode: muted backgrounds and darker text */
+html[data-theme='dark'] .callup-section .inline-flex.items-center {
+  background-color: rgba(255,255,255,0.06) !important;
+  box-shadow: none !important;
+}
+
+/* Slightly darker text for small meta info (like location/status) in cards */
+html[data-theme='dark'] .card-meta,
+html[data-theme='dark'] .issue-location,
+html[data-theme='dark'] .issue-description {
+  color: rgba(255,255,255,0.82) !important;
+}
