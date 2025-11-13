@@ -47,8 +47,8 @@ const RecentComplaints = () => {
     return (
         
                 <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                    <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-2xl sm:text-3xl font-bold">Recent Complaints</h2>
+                    <div className=" text-center items-center justify-between mb-6">
+                        <h2 className="text-2xl  sm:text-3xl font-bold text-center">Recent Complaints</h2>
                         <p className="text-sm text-gray-500">Latest reported issues in your area</p>
                     </div>
 
