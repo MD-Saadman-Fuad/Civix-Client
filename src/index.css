@@ -14,3 +14,8 @@
   --color-primary: blue;
   --color-secondary: teal;
 }
+
+/* Use Google Poppins as the primary site font */
+body {
+  font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}

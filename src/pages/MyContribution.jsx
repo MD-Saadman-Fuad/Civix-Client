@@ -7,7 +7,7 @@ import { API_BASE } from '../lib/apiBase';
 import { use } from 'react';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
-import { data } from 'react-router';
+// import { data } from 'react-router';
 
 const MyContribution = () => {
     const { user } = use(AuthContext);
