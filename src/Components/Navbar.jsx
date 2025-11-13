@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
-import logo from '../assets/user.png'
+import logo from '../assets/civix_logo.png'
 import userPNG from '../assets/user.png';
 
 const Navbar = () => {
@@ -19,10 +19,10 @@ const Navbar = () => {
     }
     return (
         <div>
-            <div className="navbar bg-base-100 shadow-sm h-20">
+            <div className="navbar bg-base-100 shadow-sm h-20 p-2">
                 <div className="navbar-start">
 
-                    <a className="btn btn-ghost text-xl"><img src={logo} alt="Logo" className="h-10 md:h-16  rounded-full" /></a>
+                    <img src={logo} alt="Logo" className="w-30 h-30  rounded-full" />
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-4">
@@ -60,6 +60,8 @@ const Navbar = () => {
                                     <NavLink to="/add-issues" className={({ isActive }) => `rounded-full px-4 py-2 shadow font-semibold transition-colors duration-200 ${isActive ? 'bg-orange-500 text-white' : 'bg-white text-orange-500 border border-orange-500'}`}>Add Issues</NavLink>
                                     <NavLink to="/my-issues" className={({ isActive }) => `rounded-full px-4 py-2 shadow font-semibold transition-colors duration-200 ${isActive ? 'bg-orange-500 text-white' : 'bg-white text-orange-500 border border-orange-500'}`}>My Issues</NavLink>
                                     <NavLink to="/my-contributions" className={({ isActive }) => `rounded-full px-4 py-2 shadow font-semibold transition-colors duration-200 ${isActive ? 'bg-orange-500 text-white' : 'bg-white text-orange-500 border border-orange-500'}`}>My Contribution</NavLink>
+                                    <NavLink onClick={handleSignOut} className={({ isActive }) => `rounded-full px-4 py-2 shadow font-semibold transition-colors duration-200 ${isActive ? 'bg-orange-500 text-white' : 'bg-white text-orange-500 border border-orange-500'}`}>Sign Out</NavLink>
+
 
                                 </>
                             ) : (
@@ -77,11 +79,14 @@ const Navbar = () => {
                         </div>
                     ) : user ? (
                         <div className="flex items-center gap-3">
-                            <NavLink onClick={handleSignOut} className={({ isActive }) => `rounded-full px-4 py-2 shadow font-semibold transition-colors duration-200 ${isActive ? 'bg-orange-500 text-white' : 'bg-white text-orange-500 border border-orange-500'}`}>Sign Out</NavLink>
+                            <div className='hidden lg:flex'>
+                                <NavLink onClick={handleSignOut} className={({ isActive }) => `rounded-full px-4 py-2 shadow font-semibold transition-colors duration-200 ${isActive ? 'bg-orange-500 text-white' : 'bg-white text-orange-500 border border-orange-500'}`}>Sign Out</NavLink>
+                            </div>
+
 
                             {/* <button  className="btn bg-orange-500 hover:bg-orange-600 text-white">Sign Out</button> */}
                             <img
-                                className='w-12 h-12 rounded-full object-cover border-2 border-orange-300'
+                                className='w-15 h-15 rounded-full object-cover border-2 border-orange-300'
                                 src={user.photoURL || userPNG}
                                 alt={user.displayName || "User"}
                                 onError={(e) => {

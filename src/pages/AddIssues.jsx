@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
+import Swal from 'sweetalert2';
 
 const AddIssues = () => {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ const AddIssues = () => {
     const [category, setCategory] = useState('Garbage');
     const [location, setLocation] = useState('');
     const [description, setDescription] = useState('');
-    const [image, setImage] = useState(''); 
+    const [image, setImage] = useState('');
     const [amount, setAmount] = useState('');
     const [submitting, setSubmitting] = useState(false);
 
@@ -50,19 +51,28 @@ const AddIssues = () => {
             .then(res => res.json())
             .then(() => {
                 // expect backend to return created document or success flag
-                alert('Issue submitted successfully.');
+                // alert('Issue submitted successfully.');
                 // reset form or navigate
+
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
                 setTitle('');
                 setCategory('Garbage');
                 setLocation('');
                 setDescription('');
                 setImage('');
                 setAmount('');
-                navigate('/');
+                navigate('/my-issues');
             })
             .catch(err => {
                 console.error('Failed to submit issue:', err);
-                alert('Failed to submit issue. Please try again.');
+                Swal.fire('Error', 'Failed to submit issue. Please try again.', 'error');
             })
             .finally(() => setSubmitting(false));
     }

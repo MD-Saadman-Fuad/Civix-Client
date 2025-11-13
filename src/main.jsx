@@ -13,6 +13,7 @@ import MyIssues from './pages/MyIssues.jsx';
 import MyContribution from './pages/MyContribution.jsx';
 import AddIssues from './pages/AddIssues.jsx';
 import PrivateRoute from './Routes/PrivateRoute.jsx'
+import IssuesDetail from './pages/IssuesDetail.jsx'
 
 const router = createBrowserRouter([
   {
@@ -37,15 +38,20 @@ const router = createBrowserRouter([
       },
       {
         path: 'my-issues',
-        element: <MyIssues />,
+        element: <PrivateRoute><MyIssues /></PrivateRoute>,
       },
       {
         path: 'my-contributions',
-        element: <MyContribution />,
+        element: <PrivateRoute><MyContribution /></PrivateRoute>,
       },
       {
         path: 'add-issues',
         element: <PrivateRoute><AddIssues /></PrivateRoute>,
+      },
+      {
+        path: 'issues/:id',
+        loader: ({params}) => fetch(`http://localhost:3000/issues/${params.id}`),
+        element: <PrivateRoute><IssuesDetail /></PrivateRoute>,
       }
     ],
   },

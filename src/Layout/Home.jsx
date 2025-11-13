@@ -4,7 +4,7 @@ import Navbar from '../Components/Navbar.jsx';
 import Footer from '../Components/Footer.jsx';
 const Home = () => {
     return (
-        <div className='max-w-5xl mx-auto '>
+        <div className=' '>
             <Navbar />
             <Outlet />
             <Footer />
