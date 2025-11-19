@@ -1,7 +1,7 @@
 # Civix — Client
 
 A lightweight civic issues reporting frontend built with React and Vite. Civix lets users report problems (garbage, road damage, illegal construction, etc.), view and filter issues, contribute funds to fixes, and export contribution receipts as PDFs.
-
+backend: https://github.com/MD-Saadman-Fuad/Civix-Server
 ## Overview
 
 - Purpose: Provide a simple, mobile-first interface for reporting civic issues, tracking their status, and accepting community contributions for fixes.
