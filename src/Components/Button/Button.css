@@ -25,7 +25,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--clr-background-day);
-  // background: linear-gradient(270deg, #1b7fcc, #71b2e3);
+  /* background: linear-gradient(270deg, #1b7fcc, #71b2e3); */
   width: 8em;
   height: 3em;
   border-radius: 2em;
@@ -53,6 +53,7 @@
       0px 0px 0em 2em rgb(255 255 255 / 0.2),
       0px 0px 0em 3em rgb(255 255 255 / 0.2), 0 0 0.5em 0 #fff;
     transition: all 0.75s var(--ease);
+    z-index: 2;
     &::after {
       content: "";
       position: absolute;
@@ -167,7 +168,12 @@
   display: none !important;
 }
 #button-wrapper[data-compact="true"] canvas#stars {
-  display: none !important;
+  /* Keep the canvas visible for a compact, lightweight animation in the navbar.
+     Make sure it's positioned behind the knob and doesn't catch pointer events. */
+  display: block !important;
+  opacity: 0.9 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
 }
 
 label[for="scale"] {

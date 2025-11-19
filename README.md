@@ -1,3 +1,105 @@
+# Civix — Client
+
+A lightweight civic issues reporting frontend built with React and Vite. Civix lets users report problems (garbage, road damage, illegal construction, etc.), view and filter issues, contribute funds to fixes, and export contribution receipts as PDFs.
+
+## Overview
+
+- Purpose: Provide a simple, mobile-first interface for reporting civic issues, tracking their status, and accepting community contributions for fixes.
+- Key UX decisions: theme-aware styling (DaisyUI/Tailwind theme tokens), accessible forms, compact animated theme toggle, responsive status cards and issue cards.
+
+## Main Technologies
+
+- React (v19)
+- Vite (dev tooling)
+- Tailwind CSS + DaisyUI (styles & themes)
+- Firebase (authentication)
+- jsPDF + jspdf-autotable (PDF exports)
+- SweetAlert2 (confirmation / loading modals)
+
+## Main Features
+
+- Report issues with title, category, location, description, optional image and suggested budget.
+- Browse and filter issues by category and status.
+- User authentication with Firebase (register / login) and Google sign-in.
+- My Issues page with update/delete (CRUD) for authenticated users.
+- Contribution flow for issues (submit contribution form) and view contributions per issue.
+- Export individual contribution receipts or full contribution reports to PDF.
+- Light / Dark theme toggle persisted to localStorage and applied via `data-theme` on `<html>`.
+- Responsive UI and equal-height status cards for consistent layout.
+
+## Dependencies (selected)
+
+From `package.json`:
+
+- react, react-dom
+- vite
+- tailwindcss, daisyui
+- firebase
+- jspdf, jspdf-autotable
+- sweetalert2
+- react-router, react-router-dom
+- react-hot-toast
+- swiper, lottie-react (UI/animation helpers)
+
+Full dependency list can be found in `package.json`.
+
+## Local Setup & Run
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/MD-Saadman-Fuad/Civix-Client.git
+cd Civix-Client
+```
+
+2. Install dependencies
+
+```powershell
+npm install
+```
+
+3. Set environment variables
+
+- Create a `.env` file at the project root (Vite expects `VITE_` prefix):
+
+```text
+VITE_API_URL=https://your-backend.example.com
+VITE_FIREBASE_API_KEY=your-firebase-api-key
+VITE_FIREBASE_AUTH_DOMAIN=...
+VITE_FIREBASE_PROJECT_ID=...
+VITE_FIREBASE_APP_ID=...
+```
+
+4. Start development server
+
+```powershell
+npm run dev
+```
+
+5. Build for production
+
+```powershell
+npm run build
+npm run preview
+```
+
+Notes:
+
+- The app expects a backend API (URL configured via `VITE_API_URL`) that exposes endpoints such as `/issues`, `/issues/recent`, `/issues/pending`, `/issues/resolved`, `/contributions` and `/users`.
+- For authentication, ensure your Firebase project is configured and the `src/Firebase/Firebase.config.js` file uses the matching credentials or the `VITE_FIREBASE_*` env keys.
+
+## Live Demo & Links
+
+- Live site: (add your hosted URL here)
+- API repo / docs: (add backend repository or API docs link)
+- Issues / feature requests: https://github.com/MD-Saadman-Fuad/Civix-Client/issues
+
+If you want, I can add a real screenshot to `public/screenshots/overview.png` and commit it, or update any section with more details.
+
+---
+
+Made with ❤️ — feel free to ask me to tweak the README content or add badges and CI instructions.
+
 # Civix Client (React + Vite)
 
 This repository contains the frontend application for the Civix civic contribution platform. It's built with React + Vite and designed as a single-page application (SPA) that communicates with a Node/Express + MongoDB backend.
